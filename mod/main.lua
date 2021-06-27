@@ -1875,10 +1875,10 @@ ____exports.default = (function()
     local Globals = ____exports.default
     Globals.name = "Globals"
     function Globals.prototype.____constructor(self)
+        self.p = Isaac.GetPlayer()
         self.g = Game()
         self.l = Game():GetLevel()
         self.r = Game():GetRoom()
-        self.p = Isaac.GetPlayer()
         self.itemPool = Game():GetItemPool()
         self.itemConfig = Isaac.GetItemConfig()
         self.config = __TS__New(Config)
@@ -1894,6 +1894,44 @@ local ____Globals = require("classes.Globals")
 local Globals = ____Globals.default
 local globals = __TS__New(Globals)
 ____exports.default = globals
+return ____exports
+ end,
+["callbacks.postPlayerInit"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
+local ____exports = {}
+local ____globals = require("globals")
+local g = ____globals.default
+function ____exports.main(self, player)
+    g.p = player
+end
+return ____exports
+ end,
+["saveData"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
+local ____exports = {}
+local json = require("json")
+local mod = nil
+function ____exports.setMod(self, newMod)
+    mod = newMod
+end
+function ____exports.save(self)
+    if mod == nil then
+        error("\"saveData.save()\" was called without the mod being initialized.")
+    end
+    local saveData = {}
+    mod:SaveData(
+        json.encode(saveData)
+    )
+end
+function ____exports.load(self)
+    if mod == nil then
+        error("\"saveData.load()\" was called without the mod being initialized.")
+    end
+    if not Isaac.HasModData(mod) then
+        return
+    end
+    local saveData = json.decode(
+        Isaac.LoadModData(mod)
+    )
+end
 return ____exports
  end,
 ["tests.modConfigMenu"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
@@ -1942,49 +1980,11 @@ function ____exports.main(self)
 end
 return ____exports
  end,
-["callbacks.postPlayerInit"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-local ____exports = {}
-local ____globals = require("globals")
-local g = ____globals.default
-function ____exports.main(self, player)
-    g.p = player
-end
-return ____exports
- end,
-["saveData"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
-local ____exports = {}
-local json = require("json")
-local mod = nil
-function ____exports.setMod(self, newMod)
-    mod = newMod
-end
-function ____exports.save(self)
-    if mod == nil then
-        error("\"saveData.save()\" was called without the mod being initialized.")
-    end
-    local saveData = {}
-    mod:SaveData(
-        json.encode(saveData)
-    )
-end
-function ____exports.load(self)
-    if mod == nil then
-        error("\"saveData.load()\" was called without the mod being initialized.")
-    end
-    if not Isaac.HasModData(mod) then
-        return
-    end
-    local saveData = json.decode(
-        Isaac.LoadModData(mod)
-    )
-end
-return ____exports
- end,
 ["main"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local modConfigMenu = require("tests.modConfigMenu")
 local postPlayerInit = require("callbacks.postPlayerInit")
 local saveData = require("saveData")
+local modConfigMenu = require("tests.modConfigMenu")
 local IsaacScriptTestBed = RegisterMod("IsaacScriptTestBed", 1)
 IsaacScriptTestBed:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, postPlayerInit.main)
 modConfigMenu:main()

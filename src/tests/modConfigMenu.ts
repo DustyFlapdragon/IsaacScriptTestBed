@@ -23,7 +23,7 @@ export function main(): void {
    * turns out you don't want to do this without later adding settings
    * as it breaks esc controls and you get stuck in the menu
    */
-  // ModConfigMenu.AddSetting(categoryName;
+  // ModConfigMenu.AddSetting(categoryName);
 
   /**
    * @remark addSetting

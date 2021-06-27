@@ -11,6 +11,123 @@ declare const ModConfigMenu: ModConfigMenuInterface;
  */
 declare interface ModConfigMenuInterface {
   /**
+   * Create a boolean setting under the provided category and subcategory.
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
+   * @param info the information for the setting
+   * @param color
+   */
+  AddBooleanSetting(
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    defaultValue: number | boolean,
+    displayText: string,
+    displayValueProxies: [],
+    info: string[],
+    color: string,
+  ): void;
+
+  /**
+   * Add a Controller keybinding setting.
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
+   * @param info the information for the setting
+   * @param color
+   */
+  AddControllerSetting(
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    defaultValue: number | boolean,
+    displayText: string,
+    displayDevice: boolean,
+    info: string[],
+    color: string,
+  ): void;
+
+  /**
+   * Add a keyboard keybinding setting.
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
+   * @param info the information for the setting
+   * @param color
+   */
+  AddKeyboardSetting(
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    defaultValue: number | boolean,
+    displayText: string,
+    displayDevice: boolean,
+    info: string[],
+    color: string,
+  ): void;
+
+  /**
+   * Add a number value setting under the provided category and subcategory.
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param minValue The minimum setting value, used for AddNumberSetting
+   * @param maxValue The maximum setting value, used for AddNumberSetting
+   * @param modifyBy The number to modify the AddNumberSetting by
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
+   * @param info the information for the setting
+   * @param color
+   */
+  AddNumberSetting(
+    settingType: ModConfigMenuOptionType,
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    minValue: number,
+    maxValue: number,
+    modifyBy: number,
+    defaultValue: number | boolean,
+    displayText: string,
+    displayValueProxies: [],
+    displayDevice: boolean,
+    info: string[],
+    color: string,
+    functionName: string,
+  ): void;
+
+  /**
+   * Add a slider setting under the provided category and subcategory.
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param info the information for the setting
+   * @param color
+   */
+  AddScrollSetting(
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    defaultValue: number | boolean,
+    displayText: string,
+    info: string[],
+    color: string,
+  ): void;
+
+  /**
    * Add a new setting to the supplied category and subcategory with the provided data.
    * If the category/subcategory does not exist, create it
    * This is the default way to create settings, most other setting options utilise it
@@ -21,8 +138,8 @@ declare interface ModConfigMenuInterface {
    */
   AddSetting(
     categoryName: string,
-    subcategoryName?: string,
-    settingTable?: ModConfigMenuSetting,
+    subcategoryName: string,
+    settingTable: ModConfigMenuSetting,
   ): void;
 
   /**
@@ -47,7 +164,7 @@ declare interface ModConfigMenuInterface {
   ): void;
 
   /**
-   *
+   * Add a title to the mod config menu under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param text A string of text to be added
@@ -62,10 +179,44 @@ declare interface ModConfigMenuInterface {
   ): void;
 
   /**
+   * Create a setting without using a table.
+   * @param settingType the type of setting to add
+   * @param categoryName Name of category on the left of ModConfigMenu
+   * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
+   * @param configTableAttribute an optional attribute for the setting
+   * @param minValue The minimum setting value, used for AddNumberSetting
+   * @param maxValue The maximum setting value, used for AddNumberSetting
+   * @param modifyBy The number to modify the AddNumberSetting by
+   * @param defaultValue the default value of the setting
+   * @param displayText text to be displayed for setting
+   * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
+   * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
+   * @param info the information for the setting
+   * @param color
+   * @param functionName The name of the function it was called from (only used in error messages, and really only used internally).
+   */
+  SimpleAddSetting(
+    settingType: ModConfigMenuOptionType,
+    categoryName: string,
+    subcategoryName: string,
+    configTableAttribute: string,
+    minValue: number,
+    maxValue: number,
+    modifyBy: number,
+    defaultValue: number | boolean,
+    displayText: string,
+    displayValueProxies: [],
+    displayDevice: boolean,
+    info: string[],
+    color: string,
+    functionName: string,
+  ): void;
+
+  /**
    * Remove the setting at the provided category, subcategory and attribute
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param settingAttribute
+   * @param settingAttribute an optional attribute for the setting
    * @noSelf There is no contextual parameter
    */
   RemoveSetting(
