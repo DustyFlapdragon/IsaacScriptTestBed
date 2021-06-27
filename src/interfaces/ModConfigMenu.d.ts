@@ -13,7 +13,7 @@ declare interface ModConfigMenuInterface {
   /**
    * Add a new setting to the supplied category and subcategory with the provided data.
    * If the category/subcategory does not exist, create it
-   * This is the default way to create settings, all other setting options utilise it
+   * This is the default way to create settings, most other setting options utilise it
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param settingTable {@link ModConfigMenuSetting} A table of data for the setting.
