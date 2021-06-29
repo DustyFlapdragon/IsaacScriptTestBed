@@ -27,7 +27,7 @@ declare interface ModConfigMenuInterface {
     configTableAttribute: string,
     defaultValue: boolean,
     displayText: string,
-    displayValueProxies: [],
+    displayValueProxies: Record<string, unknown>,
     info?: string,
     color?: string,
   ): void;

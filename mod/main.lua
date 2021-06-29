@@ -1896,6 +1896,12 @@ local globals = __TS__New(Globals)
 ____exports.default = globals
 return ____exports
  end,
+["callbacks.evaluateCache"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
+local ____exports = {}
+function ____exports.main(self, player, cacheFlag)
+end
+return ____exports
+ end,
 ["callbacks.postPlayerInit"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
 local ____globals = require("globals")
@@ -1977,17 +1983,18 @@ function ____exports.main(self)
     ModConfigMenu.RemoveSetting(categoryName, subcategoryName, "testRemoveAttribute")
     ModConfigMenu.AddSpace(categoryName, subcategoryName)
     ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles")
-    ModConfigMenu:AddControllerSetting(categoryName, subcategoryName, "some attribute", true, "some text")
 end
 return ____exports
  end,
 ["main"] = function() --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
+local evaluateCache = require("callbacks.evaluateCache")
 local postPlayerInit = require("callbacks.postPlayerInit")
 local saveData = require("saveData")
 local modConfigMenu = require("tests.modConfigMenu")
 local IsaacScriptTestBed = RegisterMod("IsaacScriptTestBed", 1)
 IsaacScriptTestBed:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, postPlayerInit.main)
+IsaacScriptTestBed:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, evaluateCache.main, CacheFlag.CACHE_RANGE)
 modConfigMenu:main()
 saveData:setMod(IsaacScriptTestBed)
 saveData:load()
