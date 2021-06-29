@@ -67,6 +67,15 @@ export function main(): void {
 
   // add some text
   ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles");
+
+  // add a boolean setting
+  ModConfigMenu.AddControllerSetting(
+    categoryName,
+    subcategoryName,
+    "some attribute",
+    true,
+    "some text",
+  );
 }
 
 /**

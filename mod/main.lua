@@ -1977,6 +1977,7 @@ function ____exports.main(self)
     ModConfigMenu.RemoveSetting(categoryName, subcategoryName, "testRemoveAttribute")
     ModConfigMenu.AddSpace(categoryName, subcategoryName)
     ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles")
+    ModConfigMenu:AddControllerSetting(categoryName, subcategoryName, "some attribute", true, "some text")
 end
 return ____exports
  end,

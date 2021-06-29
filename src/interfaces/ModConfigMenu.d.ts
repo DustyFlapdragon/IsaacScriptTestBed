@@ -25,13 +25,12 @@ declare interface ModConfigMenuInterface {
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
-    defaultValue: number | boolean,
+    defaultValue: boolean,
     displayText: string,
     displayValueProxies: [],
-    info: string[],
-    color: string,
+    info?: string,
+    color?: string,
   ): void;
-
   /**
    * Add a Controller keybinding setting.
    * @param categoryName Name of category on the left of ModConfigMenu
@@ -49,9 +48,9 @@ declare interface ModConfigMenuInterface {
     configTableAttribute: string,
     defaultValue: number | boolean,
     displayText: string,
-    displayDevice: boolean,
-    info: string[],
-    color: string,
+    displayDevice?: boolean,
+    info?: string[],
+    color?: string,
   ): void;
 
   /**
@@ -72,8 +71,8 @@ declare interface ModConfigMenuInterface {
     defaultValue: number | boolean,
     displayText: string,
     displayDevice: boolean,
-    info: string[],
-    color: string,
+    info?: string[],
+    color?: string,
   ): void;
 
   /**
@@ -102,9 +101,9 @@ declare interface ModConfigMenuInterface {
     displayText: string,
     displayValueProxies: [],
     displayDevice: boolean,
-    info: string[],
-    color: string,
-    functionName: string,
+    info?: string[],
+    color?: string,
+    functionName?: string,
   ): void;
 
   /**
@@ -123,8 +122,8 @@ declare interface ModConfigMenuInterface {
     configTableAttribute: string,
     defaultValue: number | boolean,
     displayText: string,
-    info: string[],
-    color: string,
+    info?: string[],
+    color?: string,
   ): void;
 
   /**
@@ -207,9 +206,9 @@ declare interface ModConfigMenuInterface {
     displayText: string,
     displayValueProxies: [],
     displayDevice: boolean,
-    info: string[],
-    color: string,
-    functionName: string,
+    info?: string[],
+    color?: string,
+    functionName?: string,
   ): void;
 
   /**
