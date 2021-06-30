@@ -18,19 +18,21 @@ declare interface ModConfigMenuInterface {
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    */
   AddBooleanSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
     defaultValue: boolean,
     displayText: string,
-    displayValueProxies: Record<string, unknown>,
+    displayValueProxies: Record<string, string>,
     info?: string,
     color?: string,
   ): void;
+
   /**
    * Add a Controller keybinding setting.
    * @param categoryName Name of category on the left of ModConfigMenu
@@ -39,10 +41,11 @@ declare interface ModConfigMenuInterface {
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    */
   AddControllerSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
@@ -61,10 +64,11 @@ declare interface ModConfigMenuInterface {
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    */
   AddKeyboardSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
@@ -86,10 +90,11 @@ declare interface ModConfigMenuInterface {
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    */
   AddNumberSetting(
+    this: void,
     settingType: ModConfigMenuOptionType,
     categoryName: string,
     subcategoryName: string,
@@ -113,10 +118,11 @@ declare interface ModConfigMenuInterface {
    * @param configTableAttribute an optional attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    */
   AddScrollSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
@@ -133,9 +139,9 @@ declare interface ModConfigMenuInterface {
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param settingTable {@link ModConfigMenuSetting} A table of data for the setting.
-   * @noSelf There is no contextual parameter
    */
   AddSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     settingTable: ModConfigMenuSetting,
@@ -145,18 +151,17 @@ declare interface ModConfigMenuInterface {
    * Add a space to the mod config menu under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @noSelf There is no contextual parameter
    */
-  AddSpace(categoryName: string, subcategoryName: string): void;
+  AddSpace(this: void, categoryName: string, subcategoryName: string): void;
 
   /**
    * Add text into the mod config menu under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param textFunction A function that returns a string
-   * @noSelf There is no contextual parameter
    */
   AddText(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     textFunction: () => string,
@@ -168,9 +173,9 @@ declare interface ModConfigMenuInterface {
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param text A string of text to be added
    * @param color optional colour apparently? @todo how the hell does this work, passing KColor doesn't work
-   * @noSelf There is no contextual parameter
    */
   AddTitle(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     text: string,
@@ -190,11 +195,12 @@ declare interface ModConfigMenuInterface {
    * @param displayText text to be displayed for setting
    * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
    * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
-   * @param info the information for the setting
+   * @param info Optional information for the setting
    * @param color
    * @param functionName The name of the function it was called from (only used in error messages, and really only used internally).
    */
   SimpleAddSetting(
+    this: void,
     settingType: ModConfigMenuOptionType,
     categoryName: string,
     subcategoryName: string,
@@ -216,9 +222,9 @@ declare interface ModConfigMenuInterface {
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
    * @param settingAttribute an optional attribute for the setting
-   * @noSelf There is no contextual parameter
    */
   RemoveSetting(
+    this: void,
     categoryName: string,
     subcategoryName: string,
     settingAttribute: string,
