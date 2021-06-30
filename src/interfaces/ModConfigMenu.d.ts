@@ -14,7 +14,7 @@ declare interface ModConfigMenuInterface {
    * Create a boolean setting under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayValueProxies A table that denotes what text will be displayed based on the setting value as the index.
@@ -37,7 +37,7 @@ declare interface ModConfigMenuInterface {
    * Add a Controller keybinding setting.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
@@ -49,7 +49,7 @@ declare interface ModConfigMenuInterface {
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
-    defaultValue: number | boolean,
+    defaultValue: ModConfigMenuController,
     displayText: string,
     displayDevice?: boolean,
     info?: string[],
@@ -60,7 +60,7 @@ declare interface ModConfigMenuInterface {
    * Add a keyboard keybinding setting.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
@@ -83,7 +83,7 @@ declare interface ModConfigMenuInterface {
    * Add a number value setting under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param minValue The minimum setting value, used for AddNumberSetting
    * @param maxValue The maximum setting value, used for AddNumberSetting
    * @param modifyBy The number to modify the AddNumberSetting by
@@ -115,7 +115,7 @@ declare interface ModConfigMenuInterface {
    * Add a slider setting under the provided category and subcategory.
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
    * @param info Optional information for the setting
@@ -187,7 +187,7 @@ declare interface ModConfigMenuInterface {
    * @param settingType the type of setting to add
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param configTableAttribute an optional attribute for the setting
+   * @param configTableAttribute an attribute for the setting
    * @param minValue The minimum setting value, used for AddNumberSetting
    * @param maxValue The maximum setting value, used for AddNumberSetting
    * @param modifyBy The number to modify the AddNumberSetting by
@@ -221,7 +221,7 @@ declare interface ModConfigMenuInterface {
    * Remove the setting at the provided category, subcategory and attribute
    * @param categoryName Name of category on the left of ModConfigMenu
    * @param subcategoryName Name of the sub category on the tab list at the top of ModConfigMenu
-   * @param settingAttribute an optional attribute for the setting
+   * @param settingAttribute an attribute for the setting
    */
   RemoveSetting(
     this: void,
@@ -264,4 +264,27 @@ declare const enum ModConfigMenuOptionType {
   KEYBIND_KEYBOARD = 6,
   KEYBIND_CONTROLLER = 7,
   TITLE = 8,
+}
+
+/**
+ * ModConfigMenu does its own thing for Controller so we cannot use enums.unofficial
+ * @todo work on a change to MCM
+ */
+declare const enum ModConfigMenuController {
+  DPAD_LEFT = 0,
+  DPAD_RIGHT = 1,
+  DPAD_UP = 2,
+  DPAD_DOWN = 3,
+  BUTTON_A = 4,
+  BUTTON_B = 5,
+  BUTTON_X = 6,
+  BUTTON_Y = 7,
+  BUMPER_LEFT = 8,
+  TRIGGER_LEFT = 9,
+  STICK_LEFT = 10,
+  BUMPER_RIGHT = 11,
+  TRIGGER_RIGHT = 12,
+  STICK_RIGHT = 13,
+  BUTTON_BACK = 14,
+  BUTTON_START = 15,
 }

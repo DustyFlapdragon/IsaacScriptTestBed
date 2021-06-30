@@ -32,7 +32,7 @@ export function main(): void {
    */
   // ModConfigMenu.AddSetting(categoryName, "test");
 
-  // no lets add a full boolean setting
+  // now lets add a full boolean setting
   ModConfigMenu.AddSetting(categoryName, subcategoryName, {
     Type: ModConfigMenuOptionType.BOOLEAN,
     CurrentSetting: () => addSettingOption,
@@ -65,8 +65,27 @@ export function main(): void {
   // add a space
   ModConfigMenu.AddSpace(categoryName, subcategoryName);
 
-  // add some text
+  // add some text (title) to the menu
   ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles");
+
+  // now lets add a boolean setting directly (or indirectly depending on how you look at it)
+  ModConfigMenu.AddBooleanSetting(
+    categoryName,
+    subcategoryName,
+    "attribute",
+    true,
+    "BooleanTest",
+    { true: "On", false: "Off" },
+  );
+
+  // now a controller setting
+  ModConfigMenu.AddControllerSetting(
+    categoryName,
+    subcategoryName,
+    "controller-settings",
+    ModConfigMenuController.STICK_RIGHT,
+    "Controller Setting",
+  );
 }
 /**
  * Determine english text for on/off status

@@ -1983,6 +1983,8 @@ function ____exports.main(self)
     ModConfigMenu.RemoveSetting(categoryName, subcategoryName, "testRemoveAttribute")
     ModConfigMenu.AddSpace(categoryName, subcategoryName)
     ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles")
+    ModConfigMenu.AddBooleanSetting(categoryName, subcategoryName, "attribute", true, "BooleanTest", {["true"] = "On", ["false"] = "Off"})
+    ModConfigMenu.AddControllerSetting(categoryName, subcategoryName, "controller-settings", 13, "Controller Setting")
 end
 return ____exports
  end,
