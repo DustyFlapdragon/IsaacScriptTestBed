@@ -1984,7 +1984,8 @@ function ____exports.main(self)
     ModConfigMenu.AddSpace(categoryName, subcategoryName)
     ModConfigMenu.AddTitle(categoryName, subcategoryName, "I see test Titles")
     ModConfigMenu.AddBooleanSetting(categoryName, subcategoryName, "attribute", true, "BooleanTest", {["true"] = "On", ["false"] = "Off"})
-    ModConfigMenu.AddControllerSetting(categoryName, subcategoryName, "controller-settings", 13, "Controller Setting")
+    ModConfigMenu.AddControllerSetting(categoryName, subcategoryName, "controller-settings", 13, "a Controller Setting", true)
+    ModConfigMenu.AddKeyboardSetting(categoryName, subcategoryName, "keyboard-settings", Keyboard.KEY_0, "a keyboard setting")
 end
 return ____exports
  end,

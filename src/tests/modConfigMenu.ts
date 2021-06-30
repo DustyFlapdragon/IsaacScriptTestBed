@@ -79,12 +79,23 @@ export function main(): void {
   );
 
   // now a controller setting
+  // @todo displayDevice isnt needed, just check the type...
   ModConfigMenu.AddControllerSetting(
     categoryName,
     subcategoryName,
     "controller-settings",
     ModConfigMenuController.STICK_RIGHT,
-    "Controller Setting",
+    "a Controller Setting",
+    true,
+  );
+
+  // and a keyboard setting
+  ModConfigMenu.AddKeyboardSetting(
+    categoryName,
+    subcategoryName,
+    "keyboard-settings",
+    Keyboard.KEY_0,
+    "a keyboard setting",
   );
 }
 /**

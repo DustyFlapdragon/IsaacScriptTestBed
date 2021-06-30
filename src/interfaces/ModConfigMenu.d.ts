@@ -40,7 +40,7 @@ declare interface ModConfigMenuInterface {
    * @param configTableAttribute an attribute for the setting
    * @param defaultValue the default value of the setting
    * @param displayText text to be displayed for setting
-   * @param displayDevice Whether the display text should be suffixed with the control device ((keyboard) or (controller)).
+   * @param displayDevice This should be true to suffix the setting with (controller).
    * @param info Optional information for the setting
    * @param color
    */
@@ -51,7 +51,7 @@ declare interface ModConfigMenuInterface {
     configTableAttribute: string,
     defaultValue: ModConfigMenuController,
     displayText: string,
-    displayDevice?: boolean,
+    displayDevice: boolean,
     info?: string[],
     color?: string,
   ): void;
@@ -72,9 +72,9 @@ declare interface ModConfigMenuInterface {
     categoryName: string,
     subcategoryName: string,
     configTableAttribute: string,
-    defaultValue: number | boolean,
+    defaultValue: Keyboard,
     displayText: string,
-    displayDevice: boolean,
+    displayDevice?: boolean,
     info?: string[],
     color?: string,
   ): void;
